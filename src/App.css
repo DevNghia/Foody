@@ -1,0 +1,59 @@
+@import '~antd/dist/antd.css';
+
+:root {
+  --primary-color: #95c5f7;
+  --primary-color-light: #eaf5fe;
+  --primary-color-dark: #244263;
+  --secondary-color: #ffa27e;
+  --secondary-color-light: #ffeed7;
+  --text-primary: #1a2a48;
+  --text-gray: #867e7e;
+  --white-color: #ffffff;
+  --black-color: #000000;
+}
+
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 540px;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 960px;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+    margin: 0 auto !important;
+  }
+}
+
+.ant-select-item-option-content {
+  font-size: 16px;
+  color: var(--text-primary);
+}
