@@ -26,10 +26,6 @@
 
 <!-- ABOUT THE PROJECT -->
 
-## About The Project
-
-[![Burger King](https://github.com/hitd01/fast-food/blob/main/src/assets/screenshot.png)](https://fast-food-303bb.firebaseapp.com/)
-
 The product is the result of researching and understanding ReactJS technology.
 
 ### Built With
