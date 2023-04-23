@@ -26,12 +26,12 @@ const Footer = () => {
               </Text>
               <Text className="title">Địa chỉ</Text>
               <Text className="description">
-                Ngõ 66 Hồ Tùng Mậu, Mai Dịch, Cầu Giấy, Hà Nội
+                Ngõ 112/2, Nguyên Xá, Cầu Giấy, Hà Nội
               </Text>
             </Col>
             <Col xl={8} lg={8} md={12} sm={24} xs={24} className="phone">
               <Title level={4}>điện thoại</Title>
-              <Text>+84361234567</Text>
+              <Text>+84393179455</Text>
               <Text>+84348735326</Text>
             </Col>
           </Row>

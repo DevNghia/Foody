@@ -90,11 +90,11 @@ const Header = () => {
       key: 'home',
     },
     {
-      label: <Link to="/">About us</Link>,
+      label: <Link to="/about">About us</Link>,
       key: 'whatBK',
     },
     {
-      label: <Link to="/">Menu</Link>,
+      label: <Link to="/products">Menu</Link>,
       key: 'menu',
     },
     {

@@ -6,15 +6,15 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import {
   Home,
-  // WhatBK,
-  // Shop,
-  // Blogs,
-  // BlogSingle,
-  // Contact,
+  WhatBK,
+  Shop,
+  Blogs,
+  BlogSingle,
+  Contact,
   Error,
-  // Profile,
-  // Product,
-  // Cart,
+  Profile,
+  Product,
+  Cart,
 } from './pages';
 import { ForgotPassword } from './components';
 import {
@@ -52,6 +52,9 @@ root.render(
           {/* public routes */}
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
+            <Route path="about" element={<WhatBK />} />
+            <Route path="products" element={<Shop />} />
+            <Route path="products/:id" element={<Product />} />
           </Route>
           <Route path="forgot-password" element={<ForgotPassword />} />
           {/* <Route path="profile" element={<Profile />} /> */}
