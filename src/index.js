@@ -4,18 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-import {
-  Home,
-  WhatBK,
-  Shop,
-  Blogs,
-  BlogSingle,
-  Contact,
-  Error,
-  Profile,
-  Product,
-  Cart,
-} from './pages';
+import { Home, WhatBK, Shop, Error, Product } from './pages';
 import { ForgotPassword } from './components';
 import {
   AppAdmin,
