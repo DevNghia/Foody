@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Burger from '../../assets/images/burger-salmon_new__1.jpg';
+
 import {
   Col,
   Menu,
@@ -558,11 +560,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>
@@ -604,11 +602,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>
@@ -650,11 +644,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>
@@ -696,11 +686,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>
@@ -742,11 +728,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>
@@ -788,11 +770,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>
@@ -834,11 +812,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>
@@ -880,11 +854,7 @@ const Shop = () => {
                   xs={24}
                 >
                   <div className="product-wrapper">
-                    <Image
-                      src="https://firebasestorage.googleapis.com/v0/b/fast-food-303bb.appspot.com/o/products%2Fc503b184-28ee-483d-bc8b-0d721573596e.jpg?alt=media&token=586cd18d-929e-452c-b113-d7e48d3d1669"
-                      width="100%"
-                      height="300px"
-                    />
+                    <Image src={Burger} width="100%" height="300px" />
                     <div className="info-wrapper">
                       <div className="info">
                         <Text>abc</Text>

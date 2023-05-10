@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Burger from '../../assets/images/burger-salmon_new__1.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getProductReviews } from './productReviewSlice';
@@ -86,19 +87,19 @@ const Product = () => {
                   productReview.removed === false
               )?.length > 0
                 ? Math.round(
-                  productReviews
-                    ?.filter(
-                      (productReview) =>
-                        productReview.productId === product.productId &&
+                    productReviews
+                      ?.filter(
+                        (productReview) =>
+                          productReview.productId === product.productId &&
                           productReview.removed === false
-                    )
-                    ?.reduce((pre, cur) => pre + cur.rating, 0) /
+                      )
+                      ?.reduce((pre, cur) => pre + cur.rating, 0) /
                       productReviews?.filter(
                         (productReview) =>
                           productReview.productId === product.productId &&
                           productReview.removed === false
                       )?.length
-                )
+                  )
                 : 0,
           }))
           ?.find((product) => product.id === id)
@@ -155,19 +156,19 @@ const Product = () => {
                   productReview.removed === false
               )?.length > 0
                 ? Math.round(
-                  productReviews
-                    ?.filter(
-                      (productReview) =>
-                        productReview.productId === product.productId &&
+                    productReviews
+                      ?.filter(
+                        (productReview) =>
+                          productReview.productId === product.productId &&
                           productReview.removed === false
-                    )
-                    ?.reduce((pre, cur) => pre + cur.rating, 0) /
+                      )
+                      ?.reduce((pre, cur) => pre + cur.rating, 0) /
                       productReviews?.filter(
                         (productReview) =>
                           productReview.productId === product.productId &&
                           productReview.removed === false
                       )?.length
-                )
+                  )
                 : 0,
           }))
       );
@@ -378,45 +379,45 @@ const Product = () => {
       {productLoading === 'success' &&
       productReviewLoading === 'success' &&
       userLoading === 'success' ? (
-          <>
-            <ProductInfo>
-              <div className="container">
-                <div className="top-info">
-                  <Row gutter={[32, 32]}>
-                    <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-                      <Image src={currentProduct?.photoURL} width="100%" />
-                    </Col>
-                    <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-                      <Title level={2}>{currentProduct?.name}</Title>
-                      <div className="rate-wrapper">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          value={currentProduct?.avgRating}
-                          edit={false}
-                        />
-                        <Text>({currentPreviews?.length} đánh giá)</Text>
-                      </div>
-                      <Text>
-                        {currentProduct?.price?.toLocaleString('vi-vn', {
-                          style: 'currency',
-                          currency: 'VND',
-                        })}
-                      </Text>
-                      <div className="quantity-change-wrapper">
-                        <div className="quantity-change">
-                          <Text className="quantity">{quantity}</Text>
-                          <div className="btn-wrapper">
-                            <Button
-                              type="default"
-                              onClick={() => setQuantity(quantity + 1)}
-                              disabled={
-                                cartsLocalStorage?.find(
-                                  (cart) =>
-                                    cart.productId === currentProduct?.productId
-                                )?.quantity > 0
-                                  ? cartsLocalStorage?.find(
+        <>
+          <ProductInfo>
+            <div className="container">
+              <div className="top-info">
+                <Row gutter={[32, 32]}>
+                  <Col xl={12} lg={12} md={12} sm={24} xs={24}>
+                    <Image src={Burger} width="100%" />
+                  </Col>
+                  <Col xl={12} lg={12} md={12} sm={24} xs={24}>
+                    <Title level={2}>{currentProduct?.name}</Title>
+                    <div className="rate-wrapper">
+                      <ReactStars
+                        count={5}
+                        size={25}
+                        activeColor="#ffa27e"
+                        value={currentProduct?.avgRating}
+                        edit={false}
+                      />
+                      <Text>({currentPreviews?.length} đánh giá)</Text>
+                    </div>
+                    <Text>
+                      {currentProduct?.price?.toLocaleString('vi-vn', {
+                        style: 'currency',
+                        currency: 'VND',
+                      })}
+                    </Text>
+                    <div className="quantity-change-wrapper">
+                      <div className="quantity-change">
+                        <Text className="quantity">{quantity}</Text>
+                        <div className="btn-wrapper">
+                          <Button
+                            type="default"
+                            onClick={() => setQuantity(quantity + 1)}
+                            disabled={
+                              cartsLocalStorage?.find(
+                                (cart) =>
+                                  cart.productId === currentProduct?.productId
+                              )?.quantity > 0
+                                ? cartsLocalStorage?.find(
                                     (cart) =>
                                       cart.productId ===
                                       currentProduct?.productId
@@ -424,144 +425,144 @@ const Product = () => {
                                     quantity -
                                     1 ===
                                   currentProduct?.quantityRemaining
-                                  : quantity === currentProduct?.quantityRemaining
-                              }
-                            >
-                              <PlusOutlined />
-                            </Button>
-                            <Button
-                              type="default"
-                              disabled={quantity === 1}
-                              onClick={() => setQuantity(quantity - 1)}
-                            >
-                              <MinusOutlined />
-                            </Button>
-                          </div>
-                        </div>
-                        <div className="btn-add">
-                          <Button
-                            type="primary"
-                            onClick={handleAddCurrentProductToCart}
-                            disabled={
-                              cartsLocalStorage?.find(
-                                (cart) =>
-                                  cart.productId === currentProduct?.productId
-                              )?.quantity === currentProduct?.quantityRemaining
+                                : quantity === currentProduct?.quantityRemaining
                             }
                           >
-                          Thêm vào giỏ hàng
+                            <PlusOutlined />
+                          </Button>
+                          <Button
+                            type="default"
+                            disabled={quantity === 1}
+                            onClick={() => setQuantity(quantity - 1)}
+                          >
+                            <MinusOutlined />
                           </Button>
                         </div>
                       </div>
-                      <Text>Phân loại: {currentProduct?.category}</Text>
-                    </Col>
-                  </Row>
-                </div>
-              </div>
-            </ProductInfo>
-
-            <DescriptionWrapper>
-              <div className="container">
-                <Title level={4}>Mô tả</Title>
-                <Text>{currentProduct?.description?.join('\n')}</Text>
-              </div>
-            </DescriptionWrapper>
-
-            <ReviewWrapper>
-              <div className="container">
-                <Title level={4}>Đánh giá ({currentPreviews?.length})</Title>
-                {currentPreviews?.length > 0 ? (
-                  currentPreviews?.map((preview) => (
-                    <div className="review-wrapper" key={preview?.id}>
-                      <Avatar size={60} src={preview?.avatar}>
-                        {preview?.avatar
-                          ? ''
-                          : preview?.username?.charAt(0)?.toUpperCase()}
-                      </Avatar>
-                      <div className="review">
-                        <div className="top">
-                          <Text className="username">{preview?.username}</Text>
-                          <Text className="time">
-                            {moment(preview?.createdAt?.seconds * 1000).format(
-                              'DD-MM-YYYY'
-                            )}
-                          </Text>
-                        </div>
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          color2={'#ffa27e'}
-                          value={preview?.rating}
-                          edit={false}
-                        />
-                        <div className="comments">
-                          {preview?.contents?.map((review, index) => (
-                            <Text key={index}>{review}</Text>
-                          ))}
-                        </div>
+                      <div className="btn-add">
+                        <Button
+                          type="primary"
+                          onClick={handleAddCurrentProductToCart}
+                          disabled={
+                            cartsLocalStorage?.find(
+                              (cart) =>
+                                cart.productId === currentProduct?.productId
+                            )?.quantity === currentProduct?.quantityRemaining
+                          }
+                        >
+                          Thêm vào giỏ hàng
+                        </Button>
                       </div>
                     </div>
-                  ))
-                ) : (
-                  <Text className="no-preview">Chưa có đánh giá nào</Text>
-                )}
+                    <Text>Phân loại: {currentProduct?.category}</Text>
+                  </Col>
+                </Row>
               </div>
-            </ReviewWrapper>
+            </div>
+          </ProductInfo>
 
-            <AddReviewWrapper>
-              <div className="container">
-                <Title level={4}>Thêm đánh giá</Title>
-                {isLogged && !isReviewed ? (
-                  <Form
-                    form={form}
-                    onFinish={addReviewSubmit}
-                    name="add-review"
-                    className="add-review-form"
-                  >
-                    <Form.Item label="Đánh giá của bạn">
+          <DescriptionWrapper>
+            <div className="container">
+              <Title level={4}>Mô tả</Title>
+              <Text>{currentProduct?.description?.join('\n')}</Text>
+            </div>
+          </DescriptionWrapper>
+
+          <ReviewWrapper>
+            <div className="container">
+              <Title level={4}>Đánh giá ({currentPreviews?.length})</Title>
+              {currentPreviews?.length > 0 ? (
+                currentPreviews?.map((preview) => (
+                  <div className="review-wrapper" key={preview?.id}>
+                    <Avatar size={60} src={preview?.avatar}>
+                      {preview?.avatar
+                        ? ''
+                        : preview?.username?.charAt(0)?.toUpperCase()}
+                    </Avatar>
+                    <div className="review">
+                      <div className="top">
+                        <Text className="username">{preview?.username}</Text>
+                        <Text className="time">
+                          {moment(preview?.createdAt?.seconds * 1000).format(
+                            'DD-MM-YYYY'
+                          )}
+                        </Text>
+                      </div>
                       <ReactStars
                         count={5}
                         size={25}
                         color2={'#ffa27e'}
-                        value={rateStars}
-                        onChange={handleChangeRating}
+                        value={preview?.rating}
+                        edit={false}
                       />
-                    </Form.Item>
-                    <Form.Item
-                      name="review"
-                      rules={[
-                        {
-                          required: true,
-                          message: 'Vui lòng nhập trường này!',
-                        },
-                      ]}
-                    >
-                      <TextArea rows={4} placeholder="Đánh giá" />
-                    </Form.Item>
-                    <Form.Item>
-                      <Button
-                        size="large"
-                        type="primary"
-                        htmlType="submit"
-                        className="add-review-btn"
-                      >
-                      Đánh giá
-                      </Button>
-                    </Form.Item>
-                  </Form>
-                ) : (
-                  <Text className="require-login">
-                  Có vẻ như bạn chưa đăng nhập hoặc đã đánh giá món ăn này rồi
-                  </Text>
-                )}
-              </div>
-            </AddReviewWrapper>
+                      <div className="comments">
+                        {preview?.contents?.map((review, index) => (
+                          <Text key={index}>{review}</Text>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <Text className="no-preview">Chưa có đánh giá nào</Text>
+              )}
+            </div>
+          </ReviewWrapper>
 
-            <RelatedProductsWrapper>
-              <div className="container">
-                <Title level={4}>Món ngon liên quan</Title>
-                <Row gutter={[16, 32]}>
-                  {productsOther?.length > 0 &&
+          <AddReviewWrapper>
+            <div className="container">
+              <Title level={4}>Thêm đánh giá</Title>
+              {isLogged && !isReviewed ? (
+                <Form
+                  form={form}
+                  onFinish={addReviewSubmit}
+                  name="add-review"
+                  className="add-review-form"
+                >
+                  <Form.Item label="Đánh giá của bạn">
+                    <ReactStars
+                      count={5}
+                      size={25}
+                      color2={'#ffa27e'}
+                      value={rateStars}
+                      onChange={handleChangeRating}
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    name="review"
+                    rules={[
+                      {
+                        required: true,
+                        message: 'Vui lòng nhập trường này!',
+                      },
+                    ]}
+                  >
+                    <TextArea rows={4} placeholder="Đánh giá" />
+                  </Form.Item>
+                  <Form.Item>
+                    <Button
+                      size="large"
+                      type="primary"
+                      htmlType="submit"
+                      className="add-review-btn"
+                    >
+                      Đánh giá
+                    </Button>
+                  </Form.Item>
+                </Form>
+              ) : (
+                <Text className="require-login">
+                  Có vẻ như bạn chưa đăng nhập hoặc đã đánh giá món ăn này rồi
+                </Text>
+              )}
+            </div>
+          </AddReviewWrapper>
+
+          <RelatedProductsWrapper>
+            <div className="container">
+              <Title level={4}>Món ngon liên quan</Title>
+              <Row gutter={[16, 32]}>
+                {productsOther?.length > 0 &&
                   productsOther?.slice(min, max)?.map((product) => (
                     <Col
                       key={product?.id}
@@ -619,27 +620,27 @@ const Product = () => {
                       </div>
                     </Col>
                   ))}
-                </Row>
-                <div className="pagination">
-                  {productsOther?.length > 0 ? (
-                    <Pagination
-                      pageSize={numEachPage}
-                      defaultCurrent={1}
-                      total={productsOther.length}
-                      onChange={handlePaginationChange}
-                    />
-                  ) : (
-                    <Text className="no-other-products">
+              </Row>
+              <div className="pagination">
+                {productsOther?.length > 0 ? (
+                  <Pagination
+                    pageSize={numEachPage}
+                    defaultCurrent={1}
+                    total={productsOther.length}
+                    onChange={handlePaginationChange}
+                  />
+                ) : (
+                  <Text className="no-other-products">
                     Món ăn cùng loại tạm thời hết
-                    </Text>
-                  )}
-                </div>
+                  </Text>
+                )}
               </div>
-            </RelatedProductsWrapper>
-          </>
-        ) : (
-          <Spin />
-        )}
+            </div>
+          </RelatedProductsWrapper>
+        </>
+      ) : (
+        <Spin />
+      )}
     </>
   );
 };
