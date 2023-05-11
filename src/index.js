@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-import { Home, WhatBK, Shop, Error, Product } from './pages';
+import { Home, WhatBK, Shop, Error, Product, Blogs } from './pages';
 import { ForgotPassword } from './components';
 import {
   AppAdmin,
@@ -44,6 +44,7 @@ root.render(
             <Route path="about" element={<WhatBK />} />
             <Route path="products" element={<Shop />} />
             <Route path="products/:id" element={<Product />} />
+            <Route path="blogs" element={<Blogs />} />
           </Route>
           <Route path="forgot-password" element={<ForgotPassword />} />
           {/* <Route path="profile" element={<Profile />} /> */}
