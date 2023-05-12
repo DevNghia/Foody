@@ -125,6 +125,10 @@ export const SomethingAboutBKWrapper = styled.div`
           object-fit: cover;
         }
       }
+      .zone{
+        webkit-align-items: left;
+        align-items: left; 
+      }
     }
     .ant-col.something-text {
       display: flex;
@@ -143,8 +147,10 @@ export const SomethingAboutBKWrapper = styled.div`
         margin-bottom: 15px;
         display: inline-block;
       }
+      
     }
   }
+  
   @media screen and (max-width: 991.5px) {
     .ant-row {
       .ant-col {

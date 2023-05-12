@@ -17,16 +17,14 @@ const Contact = () => {
         <div className="banner">
           <div className="content-wrapper">
             <div className="navigate">
-              <Link to="/">Trang chủ</Link>
-              <Text> / Về chúng tôi</Text>
+              <Link to="/">Home</Link>
+              <Text> / Contacts</Text>
             </div>
             <Title level={1} className="title">
-              Về chúng tôi
+              CONTACTS
             </Title>
             <Paragraph className="content">
-              Bạn có dùng thức ăn nhanh? Có nhiều người phàn nàn về nó nhưng
-              thức ăn nhanh đúng là những món ăn ngon! Bởi chúng rất thuận tiện
-              và đáp ứng được ở mọi nơi.
+              Diam ut venenatis tellus in metus vulputate eu. Placerat in egestas erat imperdiet. Velit euismod in pellentesque massa placerat duis ultricies lacus sed.
             </Paragraph>
           </div>
         </div>
@@ -36,7 +34,8 @@ const Contact = () => {
           <div className="container">
             <Row gutter={[32, 32]}>
               <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" />
+              <iframe src="https://bom.so/8zjrBG" 
+              height="100%" width="100%"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </Col>
               <Col
                 xl={12}
@@ -46,53 +45,27 @@ const Contact = () => {
                 xs={24}
                 className="something-text"
               >
-                <Title level={2}>đôi điều về chúng tôi</Title>
-                <Text>
-                  Bạn thích ăn đồ ăn ngon hay món tráng miệng. Bất cứ thứ gì
-                  ngon miệng? Chúng tôi có đồ ăn nhanh rẻ và ngon. Chúng tôi có
-                  những suất ăn lớn và sắp đồ rất đầy đủ, đặc biệt là phô mai.
-                  Phô mai rất ngon. Chúng tôi có khoai tây chiên kiểu Pháp rất
-                  ngon.
-                </Text>
-                <Link to="/products">
-                  <ButtonStyled size="middle">Xem thực đơn</ButtonStyled>
-                </Link>
+                <div className="zone">
+                    <h2 >ZONE 1</h2>
+                    <p>Nam ac felis id libero rutrum pharetra eu non lacus</p>
+                    <p><span>Free Delivery</span></p>
+                </div><div className="zone">
+                    <h2>ZONE 1</h2>
+                    <p>Nam ac felis id libero rutrum pharetra eu non lacus</p>
+                    <p><span>Free Delivery</span></p>
+                </div>
+                <div >
+                    <h2 >ZONE 1</h2>
+                    <p>Nam ac felis id libero rutrum pharetra eu non lacus</p>
+                    <p><span>Free Delivery</span></p>
+                </div>
+                
               </Col>
             </Row>
           </div>
         </SomethingAboutBKWrapper>
 
-        <PhotoGalleryWrapper>
-          <Title level={2}>thư viện hình ảnh</Title>
-          <div className="container">
-            <Row gutter={[16, 32]}>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-              <Col xl={6} lg={8} md={12} sm={24} xs={24}>
-                <Image src={Burger} width="100%" height="420px" />
-              </Col>
-            </Row>
-          </div>
-        </PhotoGalleryWrapper>
+        
       </>
     </>
   );
