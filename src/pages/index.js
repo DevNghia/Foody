@@ -6,5 +6,5 @@ export { default as Product } from './product/Product';
 // export { default as BlogSingle } from './blogSingle/BlogSingle';
 // export { default as Contact } from './contact/Contact';
 // export { default as Cart } from './cart/Cart';
-// export { default as Profile } from './profile/Profile';
+export { default as Profile } from './profile/Profile';
 export { default as Error } from './error/Error';
