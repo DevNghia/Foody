@@ -120,7 +120,10 @@ export const BlogsList = styled.div`
   .container{
     max-width: 1200px;
     margin: 0 16px;
-
+    .pagination{
+      color: #1E2F40;
+      float: right;
+    }
     .ant-row {
       width: 100%;
       position: relative;
@@ -139,7 +142,7 @@ export const BlogsList = styled.div`
       .left-side{
         padding-left: 36px;
         padding-right: 10px;
-
+        max-width: 25%;
         .sidebar-title{
           
         }
@@ -191,9 +194,12 @@ export const BlogsList = styled.div`
           margin-left: -15px;
         }
         .sidebar-post .single-post img{
+          width: 35px;
+          height: 35px;
           max-width: 100%;
           flex: 0 0 auto;
-          width: auto;
+          padding-top: 5px;
+
         }
         .sidebar-post .single-post .post-infor{
           padding-left: 0;
@@ -228,7 +234,16 @@ export const BlogsList = styled.div`
       }
     }
     .blog-grid{
+      //width: vw;
+      padding: 5px;
       margin-bottom: 50px;
+      .blog-image img{
+        object-fit: cover;
+        
+      }
+      /* .blog-image:hover img{
+        transform: scale(1.05) ;
+      } */
           button{
             background: #fbb731;
             color: #1e2f40;
@@ -248,6 +263,7 @@ export const BlogsList = styled.div`
       .blog-infor ul li a{
         color: #443737;
       }
+      
       .blog-title{
         padding: 10px 0;
         font-size: 30px;
@@ -255,12 +271,64 @@ export const BlogsList = styled.div`
         font-weight: 700;
         text-transform: uppercase;
       }
+      .blog-title a{
+        color: #443737;
+      }
     }
   }
 
   
   @media screen and (max-width: 991.5px) {
-
+    .container{
+      margin: auto;
+      /* max-width: 1000px; */
+      .blog-grid{
+        .blog-infor ul{
+        margin: 1px;
+        padding: 0;
+        
+      }
+      .blog-infor ul li{
+        margin-right: 15px;
+        display: inline-block;
+        color: #443737;
+        font-size: 13px;
+      }
+      .blog-infor ul li a{
+        color: #443737;
+      }
+      
+      .blog-title{
+        padding: 7px 0;
+        font-size: 20px;
+        line-height: 35px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .blog-title a{
+        color: #443737;
+      }
+      button{
+        font-size: 13px;
+        padding: 5px;
+      }
+      }
+      .ant-row {
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        height: 100%;
+        .ant-col-18 {
+          /* max-width: 60%; */
+        }  
+        .left-side{
+          /* max-width: 20%; */
+          padding-left: 15px;
+        }
+      }
+      
+    }
+    
   }
   @media screen and (max-width: 575.5px) {
 

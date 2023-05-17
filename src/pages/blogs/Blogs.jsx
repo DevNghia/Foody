@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Typography, Image, Button } from 'antd';
+import { Col, Row, Typography, Image, Button, Pagination } from 'antd';
 import Burger from '../../assets/images/burger-salmon_new__1.jpg';
 import { Link } from 'react-router-dom';
 import {
@@ -41,42 +41,59 @@ const Blogs = () => {
           <div className="container">
             <Row >
               <Col span={18}>
-                <div className="blog-grid">
-                  <a href="#" className="blog-image"><Image width="100%" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" /></a>
-                  <div className="blog-infor">
-                    <ul>
-                      <li><CalendarOutlined /><i> 26.Sep 2020.</i></li>
-                      <li><UserOutlined /><i> by </i> <a href="">merkulove</a></li>
-                      <li><FolderOutlined /><i> in </i> <a href="">streetfood</a></li>
-                    </ul>
+                <div className="blog-list">
+                  <div className="blog-grid">
+                    <a href="#" className="blog-image"><Image width="100%" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" /></a>
+                    <div className="blog-infor">
+                      <ul>
+                        <li><CalendarOutlined /><i> 26.Sep 2020.</i></li>
+                        <li><UserOutlined /><i> by </i> <a href="">merkulove</a></li>
+                        <li><FolderOutlined /><i> in </i> <a href="">streetfood</a></li>
+                      </ul>
+                    </div>
+                    <h1 className="blog-title"><a href="">FOOD TRUCKS : WHERE TO STOCK UP ON INGREDIENTS</a></h1>
+                    <Button type="primary" > Read post </Button>
+                  </div>   
+                  <div className="blog-grid">
+                    <a href="#" className="blog-image"><Image width="100%" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" /></a>
+                    <div className="blog-infor">
+                      <ul>
+                        <li><CalendarOutlined /><i> 26.Sep 2020.</i></li>
+                        <li><UserOutlined /><i> by </i> <a href="">merkulove</a></li>
+                        <li><FolderOutlined /><i> in </i> <a href="">streetfood</a></li>
+                      </ul>
+                    </div>
+                    <h1 className="blog-title"><a href="">FOOD TRUCKS : WHERE TO STOCK UP ON INGREDIENTS</a></h1>
+                    <Button type="primary" > Read post </Button>
                   </div>
-                  <h1 className="blog-title">FOOD TRUCKS : WHERE TO STOCK UP ON INGREDIENTS</h1>
-                  <Button type="primary" > Read post </Button>
-                </div>   
-                <div className="blog-grid">
-                  <a href="#" className="blog-image"><Image width="100%" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" /></a>
-                  <div className="blog-infor">
-                    <ul>
-                      <li><CalendarOutlined /><i> 26.Sep 2020.</i></li>
-                      <li><UserOutlined /><i> by </i> <a href="">merkulove</a></li>
-                      <li><FolderOutlined /><i> in </i> <a href="">streetfood</a></li>
-                    </ul>
-                  </div>
-                  <h1 className="blog-title">FOOD TRUCKS : WHERE TO STOCK UP ON INGREDIENTS</h1>
-                  <Button type="primary" > Read post </Button>
+                  <div className="blog-grid">
+                    <a href="#" className="blog-image"><Image width="100%" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" /></a>
+                    <div className="blog-infor">
+                      <ul>
+                        <li><CalendarOutlined /><i> 26.Sep 2020.</i></li>
+                        <li><UserOutlined /><i> by </i> <a href="">merkulove</a></li>
+                        <li><FolderOutlined /><i> in </i> <a href="">streetfood</a></li>
+                      </ul>
+                    </div>
+                    <h1 className="blog-title"><a href="">FOOD TRUCKS : WHERE TO STOCK UP ON INGREDIENTS</a></h1>
+                    <Button type="primary" > Read post </Button>
+                  </div>   
+                </div>    
+                <div className="pagination">
+                  {4 > 0 ? (
+                    <Pagination
+                      pageSize={4}
+                      defaultCurrent={1}
+                      total={9}
+                      
+                    />
+                  ) : (
+                    <Text className="no-other-products">
+                      Tạm thời không có bài viết nào
+                    </Text>
+                  )}              
                 </div>
-                <div className="blog-grid">
-                  <a href="#" className="blog-image"><Image width="100%" src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" /></a>
-                  <div className="blog-infor">
-                    <ul>
-                      <li><CalendarOutlined /><i> 26.Sep 2020.</i></li>
-                      <li><UserOutlined /><i> by </i> <a href="">merkulove</a></li>
-                      <li><FolderOutlined /><i> in </i> <a href="">streetfood</a></li>
-                    </ul>
-                  </div>
-                  <h1 className="blog-title">FOOD TRUCKS : WHERE TO STOCK UP ON INGREDIENTS</h1>
-                  <Button type="primary" > Read post </Button>
-                </div>       
+            
               </Col>              
               <Col className="left-side" span={6}>
                 <div className="sidebar-title">
