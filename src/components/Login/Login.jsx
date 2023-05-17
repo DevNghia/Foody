@@ -112,7 +112,7 @@ export default function Login() {
   // handle sign in with email
   const handleSignInWithEmail = async () => {
     const { username, password } = form.getFieldValue();
-    if (username !== 'nghiahieumd@gmail.com') {
+    if (username !== 'foody.admin.tt@admin.com') {
       await signInWithEmailAndPassword(auth, username, password)
         .then(() => {
           // Signed in

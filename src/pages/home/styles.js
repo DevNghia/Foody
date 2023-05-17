@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { Button } from 'antd';
-import AboutBG from '../../assets/images/about-bg-2.png';
 
 export const BannerWrapper = styled.div`
-  background: url(${AboutBG}) no-repeat center;
+  background: ${({ photoURL }) => `url(${photoURL}) no-repeat center`};
   background-size: cover;
   height: 100vh;
   position: relative;
@@ -16,6 +15,8 @@ export const BannerWrapper = styled.div`
     transform: translateY(-50%);
     width: 100%;
     padding: 0 40px;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100vh;
     .content-wrapper {
       flex: 1;
       display: flex;
@@ -24,7 +25,7 @@ export const BannerWrapper = styled.div`
       align-items: center;
       .title {
         text-transform: uppercase;
-        font-size: 80px;
+        font-size: 68px;
         font-weight: bold;
         margin-bottom: 15px;
         color: var(--white-color);
@@ -50,7 +51,7 @@ export const BannerWrapper = styled.div`
   @media screen and (max-width: 991.5px) {
     .banner .content-wrapper {
       .title {
-        font-size: 60px;
+        font-size: 58px;
       }
       .content {
         max-width: 600px;
@@ -60,6 +61,9 @@ export const BannerWrapper = styled.div`
   }
   @media screen and (max-width: 767.5px) {
     .banner .content-wrapper {
+      .title {
+        font-size: 48px;
+      }
       .content {
         max-width: 500px;
         font-size: 18px;
@@ -71,7 +75,7 @@ export const BannerWrapper = styled.div`
       padding: 0 20px;
       .content-wrapper {
         .title {
-          font-size: 40px;
+          font-size: 38px;
         }
         .content {
           max-width: 350px;
@@ -114,58 +118,59 @@ export const NewProductsWrapper = styled.div`
     }
   }
   .ant-col {
-    .product-image-wrapper {
-      height: 300px;
-      width: 100%;
-      img {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-      }
-    }
-    .info-wrapper {
-      background-color: var(--secondary-color-light);
-      padding: 24px;
-      .info {
-        margin-top: 16px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 24px;
-        color: var(--text-primary);
-      }
-      .footer {
-        margin-top: 16px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .rate {
-          display: flex;
-          font-size: 22px;
+    .product-wrapper {
+      box-shadow: 2px 4px 6px rgb(0 0 0 / 30%);
+      .ant-image {
+        &-img {
+          object-fit: cover;
         }
-        .icon-wrapper {
+      }
+      .info-wrapper {
+        background-color: var(--secondary-color-light);
+        padding: 10px 10px 24px;
+        .info {
+          margin-top: 16px;
           display: flex;
-          .icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+          justify-content: space-between;
+          align-items: center;
+          .ant-typography {
+            font-size: 20px;
+            color: var(--text-primary);
+          }
+          .ant-typography:not(:last-child) {
+            margin-right: 12px;
+          }
+        }
+        .footer {
+          margin-top: 16px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .icon-wrapper {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--white-color);
-            font-size: 18px;
-            cursor: pointer;
-          }
-          .shopping-cart {
-            background-color: var(--primary-color-dark);
-            margin-right: 10px;
-          }
-          .eye {
-            background-color: var(--primary-color);
-            margin-right: 10px;
-          }
-          .heart {
-            background-color: var(--secondary-color);
+            .icon {
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: var(--white-color);
+              font-size: 18px;
+              cursor: pointer;
+            }
+            .icon:not(:last-child) {
+              margin-right: 8px;
+            }
+            .shopping-cart {
+              background-color: var(--primary-color-dark);
+            }
+            .eye {
+              background-color: var(--primary-color);
+            }
+            .heart {
+              background-color: var(--secondary-color);
+            }
           }
         }
       }
@@ -195,6 +200,9 @@ export const NewProductsWrapper = styled.div`
         font-size: 42px;
       }
     }
+    .container {
+      padding: 0 8px;
+    }
   }
 `;
 
@@ -215,9 +223,12 @@ export const MenuListWrapper = styled.div`
     }
   }
   .ant-col {
+    .product-wrapper {
+      box-shadow: 2px 4px 6px rgb(0 0 0 / 30%);
+    }
     position: relative;
     &:hover img {
-      opacity: 0.3;
+      opacity: 0.8;
     }
     &:hover .middle {
       opacity: 1;
@@ -229,6 +240,8 @@ export const MenuListWrapper = styled.div`
       height: auto;
       transition: 0.5s ease;
       backface-visibility: hidden;
+      max-height: 200px;
+      object-fit: cover;
     }
     .middle {
       transition: 0.5s ease;
@@ -242,9 +255,11 @@ export const MenuListWrapper = styled.div`
       align-items: center;
       .ant-typography {
         color: var(--text-primary);
-        font-size: 30px;
+        font-size: 42px;
         margin-bottom: 10px;
         font-weight: 600;
+        text-transform: uppercase;
+        text-shadow: 2px -4px 6px rgba(255, 255, 255, 0.6);
       }
     }
   }
@@ -265,6 +280,9 @@ export const MenuListWrapper = styled.div`
       h4.ant-typography {
         font-size: 42px;
       }
+    }
+    .container {
+      padding: 0 8px;
     }
   }
 `;
@@ -334,6 +352,9 @@ export const BlogsRecentlyWrapper = styled.div`
       h4.ant-typography {
         font-size: 42px;
       }
+    }
+    .container {
+      padding: 0 8px;
     }
   }
 `;

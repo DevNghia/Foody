@@ -16,11 +16,11 @@ const useAuthAdmin = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user?.email === 'nghiahieumd@gmail.com') {
+      if (user?.email === 'foody.admin.tt@admin.com') {
         // setCurrentUser(user);
         setCurrentUser(auth.currentUser);
       }
-      if (user?.email === 'nghiahieumd@gmail.com' && !isLogged) {
+      if (user?.email === 'foody.admin.tt@admin.com' && !isLogged) {
         dispatch(setLogged(true));
         setLoading(false);
         return;
@@ -29,7 +29,7 @@ const useAuthAdmin = () => {
         setCurrentUser({});
         setLoading(false);
         return;
-      } else if (user?.email !== 'nghiahieumd@gmail.com') {
+      } else if (user?.email !== 'foody.admin.tt@admin.com') {
         navigate('/error');
         setCurrentUser({});
         setLoading(false);

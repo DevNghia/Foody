@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Row, Typography, Image, Carousel, Spin } from 'antd';
-import Burger from '../../assets/images/burger-salmon_new__1.jpg';
-
-import {
-  EyeOutlined,
-  HeartOutlined,
-  LeftOutlined,
-  RightOutlined,
-  ShoppingCartOutlined,
-  StarFilled,
-  StarOutlined,
-} from '@ant-design/icons';
+import { EyeOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import {
   BannerWrapper,
@@ -20,6 +10,7 @@ import {
   FormContactWrapper,
   ButtonStyled,
 } from './styles';
+import ReactStars from 'react-rating-stars-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../components/Product/productSlice';
 import { getProductReviews } from '../../components/Product/productReviewSlice';
@@ -164,7 +155,7 @@ const Home = () => {
 
   return (
     <>
-      {/* <Carousel autoplay>
+      <Carousel autoplay>
         {productsPreview?.slice(0, 3)?.map((product) => (
           <BannerWrapper key={product?.id} photoURL={product?.photoURL}>
             <div className="banner">
@@ -187,223 +178,61 @@ const Home = () => {
             </div>
           </BannerWrapper>
         ))}
-      </Carousel> */}
-      <BannerWrapper>
-        <div className="banner">
-          <LeftOutlined />
-          <div className="content-wrapper">
-            <Title level={1} className="title">
-              BEST BURGERS
-            </Title>
-            <Paragraph className="content">
-              Quisque nec libero ut sapien dictum commodo. Nam ac felis id
-              libero rutrum pharetra eu non lacus. Etiam maximus euismod ex, ac
-              suscipit lacus egestas in. Aenean ac tortor ut lacus ultrices
-              mollis.
-            </Paragraph>
-            <ButtonStyled size="middle" className="btn-view-more">
-              Xem thêm
-            </ButtonStyled>
-          </div>
-          <RightOutlined />
-        </div>
-      </BannerWrapper>
+      </Carousel>
+
       <NewProductsWrapper className="container">
         <div className="title-wrapper">
           <Title level={4}>món mới</Title>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore
-          </Text>
+          <Text>Các món ăn mới đang được bán tại cửa hàng</Text>
         </div>
         <div className="container">
           <Row gutter={[16, 32]}>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <div className="product-image-wrapper">
-                <img src={Burger} alt="product" />
-              </div>
-              <div className="info-wrapper">
-                <div className="info">
-                  <Text>Gà rán</Text>
-                  <Text>40.000đ</Text>
-                </div>
-                <div className="footer">
-                  <div className="rate">
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarOutlined />
-                  </div>
-                  <div className="icon-wrapper">
-                    <div className="icon shopping-cart">
-                      <ShoppingCartOutlined />
+            {productsPreview?.map((product) => (
+              <Col key={product.id} xl={8} lg={8} md={12} sm={24} xs={24}>
+                <div className="product-wrapper">
+                  <Image src={product?.photoURL} width="100%" height="300px" />
+                  <div className="info-wrapper">
+                    <div className="info">
+                      <Text>
+                        {product?.name?.length < 16
+                          ? product?.name
+                          : product?.name?.substring(0, 16) + '...'}
+                      </Text>
+                      <Text>
+                        {product?.price?.toLocaleString('vi-vn', {
+                          style: 'currency',
+                          currency: 'VND',
+                        })}
+                      </Text>
                     </div>
-                    <Link to="products/id" className="icon eye">
-                      <EyeOutlined />
-                    </Link>
-                    <div className="icon heart">
-                      <HeartOutlined />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <div className="product-image-wrapper">
-                <img src={Burger} alt="product" />
-              </div>
-              <div className="info-wrapper">
-                <div className="info">
-                  <Text>Gà rán</Text>
-                  <Text>40.000đ</Text>
-                </div>
-                <div className="footer">
-                  <div className="rate">
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarOutlined />
-                  </div>
-                  <div className="icon-wrapper">
-                    <div className="icon shopping-cart">
-                      <ShoppingCartOutlined />
-                    </div>
-                    <Link to="products/id" className="icon eye">
-                      <EyeOutlined />
-                    </Link>
-                    <div className="icon heart">
-                      <HeartOutlined />
+                    <div className="footer">
+                      <ReactStars
+                        count={5}
+                        size={25}
+                        activeColor="#ffa27e"
+                        value={product?.avgRating}
+                        edit={false}
+                      />
+                      <div className="icon-wrapper">
+                        <div className="icon shopping-cart">
+                          <ShoppingCartOutlined
+                            onClick={() =>
+                              handleAddProductToCart(product?.productId)
+                            }
+                          />
+                        </div>
+                        <Link
+                          to={`/products/${product?.id}`}
+                          className="icon eye"
+                        >
+                          <EyeOutlined />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <div className="product-image-wrapper">
-                <img src={Burger} alt="product" />
-              </div>
-              <div className="info-wrapper">
-                <div className="info">
-                  <Text>Gà rán</Text>
-                  <Text>40.000đ</Text>
-                </div>
-                <div className="footer">
-                  <div className="rate">
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarOutlined />
-                  </div>
-                  <div className="icon-wrapper">
-                    <div className="icon shopping-cart">
-                      <ShoppingCartOutlined />
-                    </div>
-                    <Link to="products/id" className="icon eye">
-                      <EyeOutlined />
-                    </Link>
-                    <div className="icon heart">
-                      <HeartOutlined />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <div className="product-image-wrapper">
-                <img src={Burger} alt="product" />
-              </div>
-              <div className="info-wrapper">
-                <div className="info">
-                  <Text>Gà rán</Text>
-                  <Text>40.000đ</Text>
-                </div>
-                <div className="footer">
-                  <div className="rate">
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarOutlined />
-                  </div>
-                  <div className="icon-wrapper">
-                    <div className="icon shopping-cart">
-                      <ShoppingCartOutlined />
-                    </div>
-                    <Link to="products/id" className="icon eye">
-                      <EyeOutlined />
-                    </Link>
-                    <div className="icon heart">
-                      <HeartOutlined />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <div className="product-image-wrapper">
-                <img src={Burger} alt="product" />
-              </div>
-              <div className="info-wrapper">
-                <div className="info">
-                  <Text>Gà rán</Text>
-                  <Text>40.000đ</Text>
-                </div>
-                <div className="footer">
-                  <div className="rate">
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarOutlined />
-                  </div>
-                  <div className="icon-wrapper">
-                    <div className="icon shopping-cart">
-                      <ShoppingCartOutlined />
-                    </div>
-                    <Link to="products/id" className="icon eye">
-                      <EyeOutlined />
-                    </Link>
-                    <div className="icon heart">
-                      <HeartOutlined />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <div className="product-image-wrapper">
-                <img src={Burger} alt="product" />
-              </div>
-              <div className="info-wrapper">
-                <div className="info">
-                  <Text>Gà rán</Text>
-                  <Text>40.000đ</Text>
-                </div>
-                <div className="footer">
-                  <div className="rate">
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarFilled />
-                    <StarOutlined />
-                  </div>
-                  <div className="icon-wrapper">
-                    <div className="icon shopping-cart">
-                      <ShoppingCartOutlined />
-                    </div>
-                    <Link to="products/id" className="icon eye">
-                      <EyeOutlined />
-                    </Link>
-                    <div className="icon heart">
-                      <HeartOutlined />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
+              </Col>
+            ))}
           </Row>
         </div>
         <Link to="products">
@@ -414,67 +243,30 @@ const Home = () => {
       <MenuListWrapper className="container">
         <div className="title-wrapper">
           <Title level={4}>danh mục thực đơn</Title>
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore
-          </Text>
+          <Text>Phân loại món ăn giúp bạn dễ dàng tìm kiếm hơn</Text>
         </div>
         <div className="container">
           <Row gutter={[16, 32]}>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <img src={Burger} alt="combo" />
-              <div className="middle">
-                <Text>Combo</Text>
-                <Link to="products/category">
-                  <ButtonStyled size="middle">Xem thêm</ButtonStyled>
-                </Link>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <img src={Burger} alt="combo" />
-              <div className="middle">
-                <Text>Combo</Text>
-                <Link to="products/category">
-                  <ButtonStyled size="middle">Xem thêm</ButtonStyled>
-                </Link>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <img src={Burger} alt="combo" />
-              <div className="middle">
-                <Text>Combo</Text>
-                <Link to="products/category">
-                  <ButtonStyled size="middle">Xem thêm</ButtonStyled>
-                </Link>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <img src={Burger} alt="combo" />
-              <div className="middle">
-                <Text>Combo</Text>
-                <Link to="products/category">
-                  <ButtonStyled size="middle">Xem thêm</ButtonStyled>
-                </Link>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <img src={Burger} alt="combo" />
-              <div className="middle">
-                <Text>Combo</Text>
-                <Link to="products/category">
-                  <ButtonStyled size="middle">Xem thêm</ButtonStyled>
-                </Link>
-              </div>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <img src={Burger} alt="combo" />
-              <div className="middle">
-                <Text>Combo</Text>
-                <Link to="products/category">
-                  <ButtonStyled size="middle">Xem thêm</ButtonStyled>
-                </Link>
-              </div>
-            </Col>
+            {categoryOptions.map((category) => (
+              <Col xl={8} lg={8} md={12} sm={24} xs={24} key={category}>
+                <div className="product-wrapper">
+                  <img
+                    src={
+                      products?.filter(
+                        (product) => product.category === category
+                      )[0]?.photoURL
+                    }
+                    alt={category}
+                  />
+                  <div className="middle">
+                    <Text>{category}</Text>
+                    <Link to={`/products/${category}`}>
+                      <ButtonStyled size="middle">Xem thêm</ButtonStyled>
+                    </Link>
+                  </div>
+                </div>
+              </Col>
+            ))}
           </Row>
         </div>
       </MenuListWrapper>
@@ -483,60 +275,32 @@ const Home = () => {
         <div className="title-wrapper">
           <Title level={4}>bài viết gần đây</Title>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore
+            Những chia sẻ về các hoạt động của cửa hàng mới nhất cho bạn
           </Text>
         </div>
         <div className="container">
           <Row gutter={[16, 32]}>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <Link to="blogs/id">
-                <div className="blog-image-wrapper">
-                  <img src={Burger} alt="blog" />
-                </div>
-                <div className="info-wrapper">
-                  <Text className="title">
-                    Burger lớn phục vụ với rau cải xoăn
-                  </Text>
-                  <Text className="description">
-                    Món ăn tuyệt vời là sự kết hợp hài hoà của burger với rau cả
-                    xoăn. Hứa hẹn sẽ mang lại...
-                  </Text>
-                </div>
-              </Link>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <Link to="blogs/id">
-                <div className="blog-image-wrapper">
-                  <img src={Burger} alt="blog" />
-                </div>
-                <div className="info-wrapper">
-                  <Text className="title">
-                    Burger lớn phục vụ với rau cải xoăn
-                  </Text>
-                  <Text className="description">
-                    Món ăn tuyệt vời là sự kết hợp hài hoà của burger với rau cả
-                    xoăn. Hứa hẹn sẽ mang lại...
-                  </Text>
-                </div>
-              </Link>
-            </Col>
-            <Col xl={8} lg={8} md={12} sm={24} xs={24}>
-              <Link to="blogs/id">
-                <div className="blog-image-wrapper">
-                  <img src={Burger} alt="blog" />
-                </div>
-                <div className="info-wrapper">
-                  <Text className="title">
-                    Burger lớn phục vụ với rau cải xoăn
-                  </Text>
-                  <Text className="description">
-                    Món ăn tuyệt vời là sự kết hợp hài hoà của burger với rau cả
-                    xoăn. Hứa hẹn sẽ mang lại...
-                  </Text>
-                </div>
-              </Link>
-            </Col>
+            {blogsPreview?.map((blog) => (
+              <Col xl={8} lg={8} md={12} sm={24} xs={24} key={blog?.id}>
+                <Link to={`/blogs/${blog?.id}`}>
+                  <div className="blog-image-wrapper">
+                    <img src={blog?.images[0]} alt="blog" />
+                  </div>
+                  <div className="info-wrapper">
+                    <Text className="title">
+                      {blog?.title?.length < 16
+                        ? blog?.title
+                        : blog?.title?.substring(0, 16) + '...'}
+                    </Text>
+                    <Text className="description">
+                      {blog?.contents?.join('\n')?.length < 50
+                        ? blog?.contents?.join('\n')
+                        : blog?.contents?.join('\n')?.substring(0, 50) + '...'}
+                    </Text>
+                  </div>
+                </Link>
+              </Col>
+            ))}
           </Row>
         </div>
         <Link to="blogs">

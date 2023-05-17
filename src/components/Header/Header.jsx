@@ -86,23 +86,23 @@ const Header = () => {
   const [pageCurrent, setPageCurrent] = useState('home');
   const navItems = [
     {
-      label: <Link to="/">Home</Link>,
+      label: <Link to="/">Trang Chủ</Link>,
       key: 'home',
     },
     {
-      label: <Link to="/about">About us</Link>,
+      label: <Link to="/about">Về chúng tôi</Link>,
       key: 'whatBK',
     },
     {
-      label: <Link to="/products">Menu</Link>,
+      label: <Link to="/products">Thực đơn</Link>,
       key: 'menu',
     },
     {
-      label: <Link to="/">Blog</Link>,
+      label: <Link to="/blogs">Bài viết </Link>,
       key: 'blog',
     },
     {
-      label: <Link to="/">Contact</Link>,
+      label: <Link to="/contact">Liên hệ</Link>,
       key: 'contact',
     },
   ];

@@ -1,0 +1,28 @@
+[debug] [2023-05-17T02:54:51.739Z] ----------------------------------------------------------------------
+[debug] [2023-05-17T02:54:51.741Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Acer\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --import=data.js
+[debug] [2023-05-17T02:54:51.741Z] CLI Version:   11.24.1
+[debug] [2023-05-17T02:54:51.741Z] Platform:      win32
+[debug] [2023-05-17T02:54:51.741Z] Node Version:  v16.14.0
+[debug] [2023-05-17T02:54:51.742Z] Time:          Wed May 17 2023 09:54:51 GMT+0700 (Indochina Time)
+[debug] [2023-05-17T02:54:51.742Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-17T02:54:51.827Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-17T02:54:51.827Z] > authorizing via signed-in user (nghiahieumd@gmail.com)
+[info] i  emulators: Starting emulators: hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: hosting"}}
+[debug] [2023-05-17T02:54:51.840Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[warn] !  hub: emulator hub unable to start on port 4400, starting on 4401 instead. {"metadata":{"emulator":{"name":"hub"},"message":"emulator hub unable to start on port 4400, starting on 4401 instead."}}
+[warn] !  logging: Logging Emulator unable to start on port 4500, starting on 4501 instead. {"metadata":{"emulator":{"name":"logging"},"message":"Logging Emulator unable to start on port 4500, starting on 4501 instead."}}
+[debug] [2023-05-17T02:54:51.843Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-05-17T02:54:51.844Z] assigned listening specs for emulators {"user":{"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"hub":[{"address":"127.0.0.1","family":"IPv4","port":4401},{"address":"::1","family":"IPv6","port":4401}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4501}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[warn] !  emulators: It seems that you are running multiple instances of the emulator suite for project foody-638ec. This may result in unexpected behavior. 
+[debug] [2023-05-17T02:54:51.857Z] [hub] writing locator at C:\Users\Acer\AppData\Local\Temp\hub-foody-638ec.json
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[debug] [2023-05-17T02:54:52.026Z] Error: ENOENT: no such file or directory, lstat 'D:\Foody\data.js'
+    at Object.lstatSync (node:fs:1516:3)
+    at findExportMetadata (C:\Users\Acer\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:118:32)
+    at Object.startAll (C:\Users\Acer\AppData\Roaming\npm\node_modules\firebase-tools\lib\emulator\controller.js:268:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async C:\Users\Acer\AppData\Roaming\npm\node_modules\firebase-tools\lib\commands\emulators-start.js:32:43
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -29,7 +29,7 @@ const Login = () => {
 
   const handleSignInWithEmail = async () => {
     const { email, password } = form.getFieldValue();
-    if (email === 'nghiahieumd@gmail.com') {
+    if (email === 'foody.admin.tt@admin.com') {
       setPersistence(auth, browserSessionPersistence)
         .then(() => {
           return signInWithEmailAndPassword(auth, email, password);

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import AboutBG from '../../assets/images/about-bg.jpg';
-import { Button } from 'antd';
+import ContactBG from '../../assets/images/contact-bg.jpg';
 
 export const BannerWrapper = styled.div`
-  background: url(${AboutBG}) no-repeat center;
+  background: url(${ContactBG}) no-repeat center;
   background-size: cover;
   height: 100vh;
   position: relative;
@@ -100,101 +99,39 @@ export const BannerWrapper = styled.div`
   }
 `;
 
-export const ButtonStyled = styled(Button)`
-  font-size: 20px;
-  height: 60px;
-  padding: 0 60px;
-  line-height: 60px;
-  font-weight: bold;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border: 1px solid var(--primary-color);
-  border-radius: 0;
-  &-sm {
-    border-radius: 0;
-  }
-`;
-
-export const SomethingAboutBKWrapper = styled.div`
+export const ContactWrapper = styled.div`
   padding-top: 150px;
-  .ant-row {
-    .ant-col {
-      .ant-image {
-        .ant-image-img {
-          height: 400px;
-          object-fit: cover;
-        }
-      }
-      .zone {
-        webkit-align-items: left;
-        align-items: left;
-      }
-    }
-    .ant-col.something-text {
+  .ant-col {
+    .info-wrapper {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      h2.ant-typography {
-        color: var(--text-primary);
-        text-transform: uppercase;
-        text-align: center;
-        font-size: 48px;
+      .info:not(:last-child) {
+        margin-bottom: 25px;
       }
-      span.ant-typography {
-        color: var(--text-gray);
-        text-align: justify;
-        font-size: 24px;
-        margin-bottom: 15px;
-        display: inline-block;
-      }
-    }
-  }
-
-  @media screen and (max-width: 991.5px) {
-    .ant-row {
-      .ant-col {
-        .ant-image {
-          &-img {
-            height: 500px;
+      .info {
+        display: flex;
+        align-items: center;
+        .anticon {
+          color: var(--text-primary);
+          font-size: 30px;
+        }
+        .content {
+          margin-left: 12px;
+          display: flex;
+          flex-direction: column;
+          .title {
+            font-size: 18px;
+            color: var(--text-gray);
+          }
+          .description {
+            font-size: 24px;
+            color: var(--text-primary);
           }
         }
       }
     }
   }
   @media screen and (max-width: 575.5px) {
-    .ant-row {
-      padding: 0 8px;
-      .ant-col.something-text {
-        h2.ant-typography {
-          font-size: 32px;
-        }
-        span.ant-typography {
-          font-size: 18px;
-        }
-      }
-    }
-  }
-`;
-
-export const PhotoGalleryWrapper = styled.div`
-  .ant-col {
-    .ant-image {
-      &-img {
-        object-fit: cover;
-      }
-    }
-  }
-  padding-top: 150px;
-  h2.ant-typography {
-    color: var(--text-primary);
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 48px;
-  }
-  @media screen and (max-width: 575.5px) {
-    h2.ant-typography {
-      font-size: 32px;
-    }
     .container {
       padding: 0 8px;
     }

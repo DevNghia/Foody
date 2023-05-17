@@ -13,6 +13,8 @@ import {
   Blogs,
   Profile,
   Contact,
+  Cart,
+  BlogSingle,
 } from './pages';
 import { ForgotPassword } from './components';
 import {
@@ -56,6 +58,8 @@ root.render(
             <Route path="profile" element={<Profile />} />
             <Route path="contact" element={<Contact />} />
             <Route path="blogs" element={<Blogs />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="blogs/:id" element={<BlogSingle />} />
           </Route>
           <Route path="forgot-password" element={<ForgotPassword />} />
           {/* <Route path="profile" element={<Profile />} /> */}

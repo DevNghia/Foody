@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Burger from '../../assets/images/burger-salmon_new__1.jpg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getProductReviews } from './productReviewSlice';
@@ -385,7 +384,7 @@ const Product = () => {
               <div className="top-info">
                 <Row gutter={[32, 32]}>
                   <Col xl={12} lg={12} md={12} sm={24} xs={24}>
-                    <Image src={Burger} width="100%" />
+                    <Image src={currentProduct?.photoURL} width="100%" />
                   </Col>
                   <Col xl={12} lg={12} md={12} sm={24} xs={24}>
                     <Title level={2}>{currentProduct?.name}</Title>

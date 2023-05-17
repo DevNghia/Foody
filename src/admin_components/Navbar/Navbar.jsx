@@ -48,31 +48,31 @@ const Navbar = () => {
       'users',
       <IdcardOutlined />
     ),
-    // getItem(
-    //   <Link to="/app/admin/products">Món ăn</Link>,
-    //   'products',
-    //   <CoffeeOutlined />
-    // ),
-    // getItem(
-    //   <Link to="/app/admin/product-reviews">Đánh giá món ăn</Link>,
-    //   'product-reviews',
-    //   <FileDoneOutlined />
-    // ),
-    // getItem(
-    //   <Link to="/app/admin/blogs">Bài viết</Link>,
-    //   'blogs',
-    //   <FileTextOutlined />
-    // ),
-    // getItem(
-    //   <Link to="/app/admin/blog-reviews">Đánh giá bài viết</Link>,
-    //   'blog-reviews',
-    //   <FileDoneOutlined />
-    // ),
-    // getItem(
-    //   <Link to="/app/admin/carts">Đơn hàng</Link>,
-    //   'carts',
-    //   <ShoppingOutlined />
-    // ),
+    getItem(
+      <Link to="/app/admin/products">Món ăn</Link>,
+      'products',
+      <CoffeeOutlined />
+    ),
+    getItem(
+      <Link to="/app/admin/product-reviews">Đánh giá món ăn</Link>,
+      'product-reviews',
+      <FileDoneOutlined />
+    ),
+    getItem(
+      <Link to="/app/admin/blogs">Bài viết</Link>,
+      'blogs',
+      <FileTextOutlined />
+    ),
+    getItem(
+      <Link to="/app/admin/blog-reviews">Đánh giá bài viết</Link>,
+      'blog-reviews',
+      <FileDoneOutlined />
+    ),
+    getItem(
+      <Link to="/app/admin/carts">Đơn hàng</Link>,
+      'carts',
+      <ShoppingOutlined />
+    ),
   ];
   const menuClick = (e) => {
     setPageCurrent(e.key);

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Burger from '../../assets/images/burger-salmon_new__1.jpg';
-
 import {
   Col,
   Menu,
@@ -551,342 +549,64 @@ const Shop = () => {
               </div>
 
               <Row gutter={[16, 32]}>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
+                {productsPreview?.length > 0 &&
+                  productsPreview?.slice(min, max)?.map((product) => (
+                    <Col
+                      key={product?.id}
+                      xl={6}
+                      lg={8}
+                      md={12}
+                      sm={24}
+                      xs={24}
+                    >
+                      <div className="product-wrapper">
+                        <Image
+                          src={product?.photoURL}
+                          width="100%"
+                          height="300px"
                         />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
+                        <div className="info-wrapper">
+                          <div className="info">
+                            <Text>
+                              {product?.name?.length < 10
+                                ? product?.name
+                                : product?.name?.substring(0, 10) + '...'}
+                            </Text>
+                            <Text>
+                              {product?.price?.toLocaleString('vi-vn', {
+                                style: 'currency',
+                                currency: 'VND',
+                              })}
+                            </Text>
                           </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
+                          <div className="footer">
+                            <ReactStars
+                              count={5}
+                              size={25}
+                              activeColor="#ffa27e"
+                              value={product?.avgRating}
+                              edit={false}
+                            />
+                            <div className="icon-wrapper">
+                              <div className="icon shopping-cart">
+                                <ShoppingCartOutlined
+                                  onClick={() =>
+                                    handleAddProductToCart(product?.productId)
+                                  }
+                                />
+                              </div>
+                              <Link to={`${product?.id}`} className="icon eye">
+                                <EyeOutlined />
+                              </Link>
+                              {/* <div className="icon heart">
                             <HeartOutlined />
                           </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
-                        />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
+                            </div>
                           </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
-                            <HeartOutlined />
-                          </div> */}
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
-                        />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
-                          </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
-                            <HeartOutlined />
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
-                        />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
-                          </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
-                            <HeartOutlined />
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
-                        />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
-                          </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
-                            <HeartOutlined />
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
-                        />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
-                          </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
-                            <HeartOutlined />
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
-                        />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
-                          </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
-                            <HeartOutlined />
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
-                <Col
-                  // key={product?.id}
-                  xl={6}
-                  lg={8}
-                  md={12}
-                  sm={24}
-                  xs={24}
-                >
-                  <div className="product-wrapper">
-                    <Image src={Burger} width="100%" height="300px" />
-                    <div className="info-wrapper">
-                      <div className="info">
-                        <Text>abc</Text>
-                        <Text>200000 VND</Text>
-                      </div>
-                      <div className="footer">
-                        <ReactStars
-                          count={5}
-                          size={25}
-                          activeColor="#ffa27e"
-                          // value={product?.avgRating}
-                          edit={false}
-                        />
-                        <div className="icon-wrapper">
-                          <div className="icon shopping-cart">
-                            <ShoppingCartOutlined
-                            // onClick={() =>
-                            //   handleAddProductToCart(product?.productId)
-                            // }
-                            />
-                          </div>
-                          <Link to="/abc" className="icon eye">
-                            <EyeOutlined />
-                          </Link>
-                          {/* <div className="icon heart">
-                            <HeartOutlined />
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Col>
+                    </Col>
+                  ))}
               </Row>
 
               <div className="pagination">
