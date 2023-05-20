@@ -24,7 +24,6 @@ const Profile = () => {
         <Header />
       </div>
       <ProfileComponent />
-      <Footer />
     </Wrapper>
   );
 };

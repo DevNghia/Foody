@@ -8,3 +8,4 @@ export { default as Contact } from './contact/Contact';
 export { default as Cart } from './cart/Cart';
 export { default as Profile } from './profile/Profile';
 export { default as Error } from './error/Error';
+export { default as Payment } from './Payment';

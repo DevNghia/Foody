@@ -15,6 +15,7 @@ import {
   Contact,
   Cart,
   BlogSingle,
+  Payment,
 } from './pages';
 import { ForgotPassword } from './components';
 import {
@@ -60,6 +61,7 @@ root.render(
             <Route path="blogs" element={<Blogs />} />
             <Route path="cart" element={<Cart />} />
             <Route path="blogs/:id" element={<BlogSingle />} />
+            <Route path="payment" element={<Payment />} />
           </Route>
           <Route path="forgot-password" element={<ForgotPassword />} />
           {/* <Route path="profile" element={<Profile />} /> */}

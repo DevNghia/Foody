@@ -2,51 +2,57 @@ import React, { useEffect, useState } from 'react';
 import { Wrapper } from './styles';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { Card, Spin, Typography } from 'antd';
+import { Card, Spin, Typography, DatePicker } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCarts } from '../../components/Cart/cartSlice';
 import moment from 'moment';
 
 const { Title } = Typography;
 
-const generateOptions = (carts) => {
+const generateOptions = (carts, selectedMonth) => {
+  const filteredCarts = carts.filter(
+    (cart) =>
+      moment(cart?.createdAt?.seconds * 1000).format('MM') ===
+      (selectedMonth ? selectedMonth.format('MM') : moment().format('MM'))
+  );
+
   const data = [
-    carts?.filter(
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '01'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '02'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '03'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '04'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '05'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '06'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '07'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '08'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '09'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '10'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '11'
-    )?.length,
-    carts?.filter(
+    ).length,
+    filteredCarts.filter(
       (cart) => moment(cart?.createdAt?.seconds * 1000).format('MM') === '12'
-    )?.length,
+    ).length,
   ];
 
   return {
@@ -99,14 +105,18 @@ const Analytics = () => {
 
   const { cartLoading, carts } = useSelector((state) => state.carts);
 
-  // states
   const [options, setOptions] = useState({});
+  const [selectedMonth, setSelectedMonth] = useState(null);
 
   useEffect(() => {
     if (cartLoading === 'success') {
-      setOptions(generateOptions(carts));
+      setOptions(generateOptions(carts, selectedMonth));
     }
-  }, [cartLoading, carts]);
+  }, [cartLoading, carts, selectedMonth]);
+
+  const handleMonthChange = (date) => {
+    setSelectedMonth(date);
+  };
 
   return (
     <Wrapper>
@@ -114,6 +124,7 @@ const Analytics = () => {
         Thống kê dữ liệu
       </Title>
       <Card>
+        <DatePicker.MonthPicker onChange={handleMonthChange} />
         {cartLoading === 'success' ? (
           <HighchartsReact highcharts={Highcharts} options={options} />
         ) : (

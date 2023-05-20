@@ -10,14 +10,134 @@ import { auth } from '../../firebase/config';
 import { getUsers } from '../Profile/profileSlice';
 import { addDocument, updateDocument } from '../../firebase/services';
 import { serverTimestamp } from 'firebase/firestore';
-
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
 const { Title, Text, Paragraph } = Typography;
+let stripePromise;
+const stripe = require('stripe')(
+  'sk_test_51N8iKqJdzJVPgoqvcZwUHBS3ZXLEb5GHtGcpxUxF24qmEkRYi5dneAiwUXUEW9m8WtSx0a97KGgLArHnPCvGc5Yo008BEK0oAg'
+);
+const getStripe = () => {
+  if (!stripePromise) {
+    stripePromise = loadStripe(
+      'pk_test_51N8iKqJdzJVPgoqvorzGmKANJ1PcAQYylBKVGX7RBlnuSwPdbrb06ueCsS7FSXA3JAXeOEZxlCBTwFBLPruoWVxX00qdyrvwCZ'
+    );
+  }
+
+  return stripePromise;
+};
 
 function isVietnamesePhoneNumber(number) {
   return /(03|05|07|08|09|01[2|6|8|9])+([0-9]{8})\b/.test(number);
 }
 
 const Cart = () => {
+  const [stripeError, setStripeError] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+  const cartItem = useSelector((state) => state.carts);
+  const pro = useSelector((state) => state.products);
+  const handleCheckout = async () => {
+    setLoading(true);
+    const cartItems = [];
+    const abc = cartItem.cartsLocalStorage;
+    const pros = pro.products;
+    abc.forEach((item) => {
+      const newItem = {
+        name: pros?.find((product) => product.productId === item.productId)
+          ?.name,
+        images: [
+          pros?.find((product) => product.productId === item.productId)
+            ?.photoURL,
+        ],
+
+        description: pros?.find(
+          (product) => product.productId === item.productId
+        )?.name,
+        price: pros?.find((product) => product.productId === item.productId)
+          ?.price,
+        quantity: item.quantity,
+      };
+      cartItems.push(newItem);
+    });
+    // const cartItems = [
+    //   {
+    //     name: 'Product 1',
+    //     description: 'Description 1',
+    //     price: 10.99,
+    //     quantity: 2,
+    //   },
+    //   {
+    //     name: 'Product 2',
+    //     description: 'Description 2',
+    //     price: 5.99,
+    //     quantity: 1,
+    //   },
+    // ];
+    // console.log(pros);
+    try {
+      const lineItems = await Promise.all(cartItems.map(createProductAndPrice));
+      const stripe = await loadStripe(
+        'pk_test_51N8iKqJdzJVPgoqvorzGmKANJ1PcAQYylBKVGX7RBlnuSwPdbrb06ueCsS7FSXA3JAXeOEZxlCBTwFBLPruoWVxX00qdyrvwCZ'
+      );
+      const { error } = await stripe.redirectToCheckout({
+        lineItems: lineItems.map((item) => ({ price: item, quantity: 1 })),
+        mode: 'payment',
+        successUrl: `${window.location.origin}/success`,
+        cancelUrl: `${window.location.origin}/cancel`,
+      });
+
+      if (error) {
+        setStripeError(error.message);
+      }
+    } catch (error) {
+      console.log('Checkout error', error);
+    }
+
+    setLoading(false);
+  };
+  const createProductAndPrice = async (item) => {
+    const response = await axios.post(
+      'https://api.stripe.com/v1/products',
+      {
+        name: item.name,
+        images: item.images,
+        description: item.description,
+      },
+      {
+        headers: {
+          Authorization:
+            'Bearer sk_test_51N8iKqJdzJVPgoqvcZwUHBS3ZXLEb5GHtGcpxUxF24qmEkRYi5dneAiwUXUEW9m8WtSx0a97KGgLArHnPCvGc5Yo008BEK0oAg',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+
+    const product = response.data;
+
+    const priceResponse = await axios.post(
+      'https://api.stripe.com/v1/prices',
+      {
+        product: product.id,
+        unit_amount: item.price * item.quantity,
+        currency: 'vnd',
+      },
+      {
+        headers: {
+          Authorization:
+            'Bearer sk_test_51N8iKqJdzJVPgoqvcZwUHBS3ZXLEb5GHtGcpxUxF24qmEkRYi5dneAiwUXUEW9m8WtSx0a97KGgLArHnPCvGc5Yo008BEK0oAg',
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }
+    );
+
+    const price = priceResponse.data;
+
+    return price.id;
+  };
+
+  if (stripeError) {
+    alert(stripeError);
+  }
   useEffect(() => {
     document.title = 'Giỏ hàng - Burger King';
     window.scrollTo(0, 0);
@@ -169,13 +289,13 @@ const Cart = () => {
           <Text className="total_price">
             {record?.quantity >= 3
               ? ((price * record.quantity * 90) / 100).toLocaleString('vi-vn', {
-                style: 'currency',
-                currency: 'VND',
-              })
+                  style: 'currency',
+                  currency: 'VND',
+                })
               : (price * record.quantity).toLocaleString('vi-vn', {
-                style: 'currency',
-                currency: 'VND',
-              })}
+                  style: 'currency',
+                  currency: 'VND',
+                })}
           </Text>
         </>
       ),
@@ -292,7 +412,10 @@ const Cart = () => {
       alert(error);
     }
   };
-
+  const handleClick = () => {
+    handleOk();
+    handleCheckout();
+  };
   // handle Ok
   const handleOk = () => {
     try {
@@ -403,7 +526,8 @@ const Cart = () => {
                 </Text>
                 <Button
                   type="primary"
-                  onClick={() => setIsModalVisible(true)}
+                  onClick={handleClick}
+                  disabled={isLoading}
                   className="payment-btn"
                 >
                   Thanh toán

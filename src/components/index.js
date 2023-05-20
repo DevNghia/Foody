@@ -6,3 +6,4 @@ export { default as ProductComponent } from './Product/Product';
 export { default as BlogComponent } from './Blog/Blog';
 export { default as CartComponent } from './Cart/Cart';
 export { default as Footer } from './Footer/Footer';
+export { default as PaymentForm } from './PaymentForm';
